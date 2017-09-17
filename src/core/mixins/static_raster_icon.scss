@@ -1,0 +1,55 @@
+
+//noinspection CssOptimizeSimilarProperties
+@mixin static_raster_icons($collection, $groups, $url, $size, $strut, $has_duplicate_glyph_names) {
+  .zen_ui__static_raster_icon[data-collection="#{$collection}"] {
+    width: $size;
+    &:before {
+      width: $size;
+      height: $size;
+      background-image: url($url);
+      top: 0 - $size / 2;
+    }
+  }
+  $group_counter: 0;
+  @each $group, $glyphs in $groups {
+    $group_counter: $group_counter + 1;
+    $adjusted_group_counter: $group_counter * 2 - 1;
+    $glyph_counter: 0;
+    @each $glyph in $glyphs {
+      $glyph_counter: $glyph_counter + 1;
+      $adjusted_glyph_counter: $glyph_counter - 1;
+      @if $strut == true {
+        @if $has_duplicate_glyph_names == true {
+          .zen_ui__static_raster_icon[data-collection="#{$collection}"][data-group="#{$group}"][data-glyph="#{$glyph}"] {
+            &:before {
+              background-position: (0 - $size - $size * $adjusted_glyph_counter * 2) (0 - $size * $adjusted_group_counter);
+            }
+          }
+        }
+        @else {
+          .zen_ui__static_raster_icon[data-collection="#{$collection}"][data-glyph="#{$glyph}"] {
+            &:before {
+              background-position: (0 - $size - $size * $adjusted_glyph_counter * 2) (0 - $size * $adjusted_group_counter);
+            }
+          }
+        }
+      }
+      @else {
+        @if $has_duplicate_glyph_names == true {
+          .zen_ui__static_raster_icon[data-collection="#{$collection}"][data-group="#{$group}"][data-glyph="#{$glyph}"] {
+            &:before {
+              background-position: ($size - $size * $glyph_counter) ($size - $size * $group_counter);
+            }
+          }
+        }
+        @else {
+          .zen_ui__static_raster_icon[data-collection="#{$collection}"][data-glyph="#{$glyph}"] {
+            &:before {
+              background-position: ($size - $size * $glyph_counter) ($size - $size * $group_counter);
+            }
+          }
+        }
+      }
+    }
+  }
+}

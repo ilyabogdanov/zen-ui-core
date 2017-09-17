@@ -1,0 +1,13 @@
+
+.zen_ui__alignment {
+  width: 100%;
+  height: 100%;
+  display: table;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  > div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}

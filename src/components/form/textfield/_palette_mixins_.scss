@@ -1,0 +1,49 @@
+
+@mixin __shadow__($color) {
+  @include box-shadow(inset 1px 1px 5px 0 $color);
+}
+
+//noinspection CssOptimizeSimilarProperties
+
+@mixin zen_ui__textfield__valid__pristine {
+  @include __shadow__($zen_ui__textfield__valid__pristine__shadow);
+  border-top-color    : nth($zen_ui__textfield__valid__pristine__border, 1);
+  border-right-color  : nth($zen_ui__textfield__valid__pristine__border, 2);
+  border-bottom-color : nth($zen_ui__textfield__valid__pristine__border, 3);
+  border-left-color   : nth($zen_ui__textfield__valid__pristine__border, 4);
+}
+@mixin zen_ui__textfield__valid__hovered {
+  @include __shadow__($zen_ui__textfield__valid__hovered__shadow);
+  border-top-color    : nth($zen_ui__textfield__valid__hovered__border, 1);
+  border-right-color  : nth($zen_ui__textfield__valid__hovered__border, 2);
+  border-bottom-color : nth($zen_ui__textfield__valid__hovered__border, 3);
+  border-left-color   : nth($zen_ui__textfield__valid__hovered__border, 4);
+}
+@mixin zen_ui__textfield__valid__focused {
+  @include __shadow__($zen_ui__textfield__valid__focused__shadow);
+  border-top-color    : nth($zen_ui__textfield__valid__focused__border, 1);
+  border-right-color  : nth($zen_ui__textfield__valid__focused__border, 2);
+  border-bottom-color : nth($zen_ui__textfield__valid__focused__border, 3);
+  border-left-color   : nth($zen_ui__textfield__valid__focused__border, 4);
+}
+@mixin zen_ui__textfield__invalid__pristine {
+  @include __shadow__($zen_ui__textfield__invalid__pristine__shadow);
+  border-top-color    : nth($zen_ui__textfield__invalid__pristine__border, 1);
+  border-right-color  : nth($zen_ui__textfield__invalid__pristine__border, 2);
+  border-bottom-color : nth($zen_ui__textfield__invalid__pristine__border, 3);
+  border-left-color   : nth($zen_ui__textfield__invalid__pristine__border, 4);
+}
+@mixin zen_ui__textfield__invalid__hovered {
+  @include __shadow__($zen_ui__textfield__invalid__hovered__shadow);
+  border-top-color    : nth($zen_ui__textfield__invalid__hovered__border, 1);
+  border-right-color  : nth($zen_ui__textfield__invalid__hovered__border, 2);
+  border-bottom-color : nth($zen_ui__textfield__invalid__hovered__border, 3);
+  border-left-color   : nth($zen_ui__textfield__invalid__hovered__border, 4);
+}
+@mixin zen_ui__textfield__invalid__focused {
+  @include __shadow__($zen_ui__textfield__invalid__focused__shadow);
+  border-top-color    : nth($zen_ui__textfield__invalid__focused__border, 1);
+  border-right-color  : nth($zen_ui__textfield__invalid__focused__border, 2);
+  border-bottom-color : nth($zen_ui__textfield__invalid__focused__border, 3);
+  border-left-color   : nth($zen_ui__textfield__invalid__focused__border, 4);
+}

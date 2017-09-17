@@ -1,0 +1,28 @@
+
+@each $palette, $options in $zen_ui__window {
+  .zen_ui__window[data-palette="#{$palette}"] {
+    .zen_ui__window_head {
+      color: map-get($options, text);
+      &:before {
+        @include linear-gradient(
+                        nth(map-get($options, gradient), 1),
+                        nth(map-get($options, gradient), 2)
+        );
+      }
+    }
+  }
+}
+$palette: map-get($zen_ui__window, ordinary);
+.zen_ui__window[data-palette="branded"] {
+  .zen_ui__window[data-palette="ordinary"] {
+    .zen_ui__window_head {
+      color: map-get($palette, text);
+      &:before {
+        @include linear-gradient(
+                        nth(map-get($palette, gradient), 1),
+                        nth(map-get($palette, gradient), 2)
+        );
+      }
+    }
+  }
+}

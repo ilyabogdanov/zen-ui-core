@@ -1,0 +1,210 @@
+
+.zen_ui__number_field__container {
+  position: relative;
+  &[data-stretch="true"] {
+    height: 100%;
+  }
+  &[data-stretch="false"] {
+    height: $zen_ui__textfield__height;
+  }
+}
+
+.zen_ui__number_field {
+  display: table;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+  label {
+    display: block;
+  }
+  > div {
+    display: table-cell;
+    vertical-align: top;
+    background: transparent;
+    height: inherit; // Firefox bug workaround
+    &.zen_ui__number_field__input_container {
+      width: 100%;
+      padding-right: 0.5rem;
+      padding-left: 1px;
+    }
+    &.zen_ui__number_field__buttons {
+      width: 0%;
+      > div {
+        position: relative;
+        float: left;
+        height: 100%;
+        > div {
+          display: table;
+          border-spacing: 0;
+          border-collapse: collapse;
+          width: 100%;
+          height: 100%;
+          border: 1px solid transparent;
+          > div {
+            display: table-row;
+            height: 50%;
+            > div {
+              display: table-cell;
+            }
+            &:first-child > div {
+              vertical-align: bottom;
+            }
+            &:last-child > div {
+              vertical-align: top;
+            }
+          }
+        }
+      }
+    }
+  }
+  input {
+    font-size: 1rem;
+    line-height: 1;
+    height: 100%;
+  }
+  .zen_ui__number_field__input_container > input + div {
+    border: 1px solid;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -2;
+    @include border-radius($zen_ui__textfield__border_radius);
+  }
+}
+
+.zen_ui__number_field {
+  .zen_ui__number_field__input_container > input + div {
+    background: $zen_ui__textfield__background_color;
+    @include zen_ui__textfield__valid__pristine;
+  }
+  &:hover {
+    .zen_ui__number_field__input_container > input + div {
+      @include zen_ui__textfield__valid__hovered;
+    }
+  }
+  .zen_ui__number_field__input_container > input:focus  + div {
+    @include zen_ui__textfield__valid__focused;
+  }
+  &[data-error="true"] {
+    .zen_ui__number_field__input_container > input + div {
+      @include zen_ui__textfield__invalid__pristine;
+    }
+    &:hover {
+      .zen_ui__number_field__input_container > input + div {
+        @include zen_ui__textfield__invalid__hovered;
+      }
+    }
+    .zen_ui__number_field__input_container > input:focus  + div {
+      @include zen_ui__textfield__invalid__focused;
+    }
+  }
+}
+.zen_ui__number_field {
+  .zen_ui__number_field__input_container {
+    > input {
+      outline: none;
+      border: none;
+      background: none;
+      @include box-sizing(border-box);
+      width: 100%;
+      height: 100%;
+      position: relative;
+      text-align: right;
+    }
+  }
+}
+
+.zen_ui__number_field__button__increase_number,
+.zen_ui__number_field__button__decrease_number {
+  position: relative;
+  width: 1.4rem;
+  height: 100%;
+  border: 0.1rem solid transparent;
+  //noinspection CssOptimizeSimilarProperties
+  &:before {
+    @include stretch_pseudo_element;
+    z-index: -1;
+    border: 1px solid;
+    @include border-radius($zen_ui__textfield__border_radius);
+    @include linear-gradient(
+                    nth($zen_ui__number_field__button__enabled__pristine__gradient, 1),
+                    nth($zen_ui__number_field__button__enabled__pristine__gradient, 2)
+    );
+    @include box-shadow(
+                    inset 1px 1px 2px nth($zen_ui__number_field__button__enabled__pristine__shadow, 1),
+                    inset -1px -1px 2px nth($zen_ui__number_field__button__enabled__pristine__shadow, 2),
+                    0 0 2px 0px nth($zen_ui__number_field__button__enabled__pristine__shadow, 3)
+    );
+    border-top-color    : nth($zen_ui__number_field__button__enabled__pristine__border, 1);
+    border-right-color  : nth($zen_ui__number_field__button__enabled__pristine__border, 2);
+    border-bottom-color : nth($zen_ui__number_field__button__enabled__pristine__border, 3);
+    border-left-color   : nth($zen_ui__number_field__button__enabled__pristine__border, 4);
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 0.45rem;
+    top: 50%;
+    @include border-radius(0);
+    margin-top: -0.16rem;
+  }
+  &:not(.disabled):hover:before {
+    @include linear-gradient(
+                    nth($zen_ui__number_field__button__enabled__hovered__gradient, 1),
+                    nth($zen_ui__number_field__button__enabled__hovered__gradient, 2)
+    );
+    @include box-shadow(
+                    inset 1px 1px 2px nth($zen_ui__number_field__button__enabled__hovered__shadow, 1),
+                    inset -1px -1px 2px nth($zen_ui__number_field__button__enabled__hovered__shadow, 2),
+                    0 0 2px 0px nth($zen_ui__number_field__button__enabled__hovered__shadow, 3)
+    );
+    border-top-color    : nth($zen_ui__number_field__button__enabled__hovered__border, 1);
+    border-right-color  : nth($zen_ui__number_field__button__enabled__hovered__border, 2);
+    border-bottom-color : nth($zen_ui__number_field__button__enabled__hovered__border, 3);
+    border-left-color   : nth($zen_ui__number_field__button__enabled__hovered__border, 4);
+  }
+}
+.zen_ui__number_field__button__increase_number {
+  border-bottom: none;
+  &:after {
+    @include triangle($direction:up,$proportion:equilateral,$size:0.3rem,$color:$zen_ui__number_field__button__enabled__triangle__pristine);
+  }
+  &:not(.disabled):hover {
+    &:after {
+      @include triangle($direction:up,$proportion:equilateral,$size:0.3rem,$color:$zen_ui__number_field__button__enabled__triangle__hovered);
+    }
+  }
+}
+.zen_ui__number_field__button__decrease_number {
+  &:before {
+    //
+  }
+  &:after {
+    @include triangle($direction:down,$proportion:equilateral,$size:0.3rem,$color:$zen_ui__number_field__button__enabled__triangle__pristine);
+  }
+  &:not(.disabled):hover {
+    &:after {
+      @include triangle($direction:down,$proportion:equilateral,$size:0.3rem,$color:$zen_ui__number_field__button__enabled__triangle__hovered);
+    }
+  }
+}
+.zen_ui__number_field__builtin_label {
+  color: silver;
+  > label {
+    display: table;
+    border-spacing: 0;
+    border-collapse: collapse;
+    height: 100%;
+    > div {
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 1rem;
+      line-height: 1;
+      padding-right: 0.5rem;
+    }
+  }
+}

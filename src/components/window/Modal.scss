@@ -1,0 +1,25 @@
+
+.zen_ui__modal {
+  @include stretch;
+  z-index: 1000000;
+  background: $zen_ui__modal__background;
+  overflow-y: auto;
+  > div {
+    width: 100%;
+    height: 100%;
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: center;
+    > div {
+      display: table-cell;
+      vertical-align: middle;
+      > div {
+        position: relative;
+        display: inline-block;
+        text-align: left;
+      }
+    }
+  }
+}

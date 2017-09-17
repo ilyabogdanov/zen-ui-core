@@ -1,0 +1,55 @@
+
+//noinspection CssUnknownTarget
+@font-face {
+  font-family: ZenUiBasicIcons;
+  src: url("img/icons.woff2") format("woff2");
+}
+
+.zen_ui__vector_icon__close {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  height: 0;
+  line-height: 0.1em;
+  vertical-align: middle;
+  width: 1rem;
+  &:before,
+  &:after {
+    font-family: ZenUiBasicIcons;
+    font-size: 1.6rem;
+    line-height: 1;
+    display: inline-block;
+    position: absolute;
+    width: 0.8em;
+    height: 0.8em;
+    left: 50%;
+    margin-left: -0.8rem;
+    margin-top: -0.5em;
+  }
+  &:before {
+    content: "Z";
+  }
+  &:after {
+    content: "z";
+  }
+}
+[data-palette="ordinary"] {
+  .zen_ui__vector_icon__close {
+    &:before {
+      color: rgba(black,0.4);
+    }
+    &:after {
+      color: rgba(black,0.15);
+    }
+  }
+}
+[data-palette="branded"] {
+  .zen_ui__vector_icon__close {
+    &:before {
+      color: rgba(black,0.5);
+    }
+    &:after {
+      color: rgba(white,0.62);
+    }
+  }
+}

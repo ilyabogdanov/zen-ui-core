@@ -1,0 +1,332 @@
+
+$zen_ui__tree__base_size: 1.24rem;
+$zen_ui__tree__tree_button__border_radius__outer: 0.23rem;
+$zen_ui__tree__tree_button__border_radius__inner: 0.15rem;
+$zen_ui__tree__leaf__height: 2.1rem;
+
+.zen_ui__tree_container {
+  &[data-stretch="true"] {
+    @include stretch_margin;
+    background: $zen_ui__tree__background;
+    overflow-y: auto;
+  }
+}
+.zen_ui__tree {
+  overflow: hidden;
+  @include user-select(none);
+  font-size: $zen_ui__tree__base_size;
+  position: relative;
+  z-index: 500;
+}
+.zen_ui__tree_branch {
+  .zen_ui__tree_branch {
+    padding: 0 0 0 $zen_ui__tree__base_size;
+    display: none;
+  }
+}
+.zen_ui__checkbox_for_tree_branch {
+  @include hidden_input;
+  &:checked {
+    + div {
+      > .zen_ui__tree_branch {
+        display: block;
+      }
+    }
+  }
+}
+.zen_ui__tree_leaf {
+  position: relative
+  // pseudo-elements :before and :after are reserved for branch lines
+}
+.zen_ui__tree_branch_toggle {
+  height: $zen_ui__tree__leaf__height;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: $zen_ui__tree__base_size;
+  > .zen_ui__tree_branch_toggle__triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 50%;
+    top: 50%;
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      left: -1px;
+      top: 0;
+      margin-left: -0.25rem;
+      margin-top: -0.25rem;
+      @include triangle(right, equilateral, 0.5rem, #c7c8ca);
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      left: -0.5rem;
+      top: -0.5rem;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}
+.zen_ui__tree_leaf {
+  &[data-aggregative=false] {
+    > div {
+      > div > .zen_ui__tree_branch_toggle {
+        > label {
+          &:before {
+            @include triangle(right, equilateral, 0.5rem, #c7c8ca);
+          }
+        }
+      }
+    }
+  }
+}
+.zen_ui__tree_leaf {
+  &[data-aggregative=true] {
+    > div {
+      > div > .zen_ui__tree_branch_toggle {
+        > label {
+          cursor: pointer;
+          &:before {
+            @include triangle(right, equilateral, 0.5rem, black);
+          }
+          &:hover:before {
+            @include triangle(right, equilateral, 0.5rem, #1d88ca);
+          }
+        }
+      }
+    }
+    > .zen_ui__checkbox_for_tree_branch {
+      &:checked {
+        + div {
+          > div > .zen_ui__tree_branch_toggle {
+            > label {
+              &:before {
+                @include triangle(down, equilateral, 0.5rem, black);
+              }
+              &:hover:before {
+                @include triangle(down, equilateral, 0.5rem, #1d88ca);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.zen_ui__tree_leaf_toggle {
+  position: relative;
+  margin-left: $zen_ui__tree__base_size;
+}
+.zen_ui__tree__tree_button {
+  @include stretch;
+  // link reset:
+  color: black;
+  border: none;
+  &:hover,
+  &:focus {
+    color: black;
+  }
+  &:before {
+    content: "";
+    display: none;
+    position: absolute;
+    z-index: -19;
+    top: 3px;
+    bottom: 3px;
+    left: 2px;
+    right: 3px;
+    @include box-shadow(
+                    inset 0 0 2px 0 nth($zen_ui__tree__tree_button__shadow, 1),
+                    inset 0 0 10px 0 nth($zen_ui__tree__tree_button__shadow, 2)
+    );
+    @include border-radius($zen_ui__tree__tree_button__border_radius__inner);
+  }
+  &:after {
+    content: "";
+    display: none;
+    position: absolute;
+    z-index: -20;
+    top: 1px;
+    bottom: 1px;
+    left: 0;
+    right: 1px;
+    border: 1px solid transparent;
+    @include border-radius($zen_ui__tree__tree_button__border_radius__outer);
+    background: $zen_ui__tree__tree_button__background;
+  }
+  &:hover {
+    cursor: pointer;
+    &:before {
+      display: block;
+    }
+    &:after {
+      display: block;
+      border-color: $Gray4;
+    }
+  }
+}
+//
+//  Branch lines
+//
+
+//  radial line
+.zen_ui__tree_branch_toggle {
+  //noinspection CssOptimizeSimilarProperties
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 50%;
+    margin-bottom: -1px;
+    left: 0 - $zen_ui__tree__base_size / 2;
+    margin-left: -1px;
+    width: $zen_ui__tree__base_size;
+    z-index: -5;
+    border-color: $zen_ui__tree__line_color;
+    border-left-width: 1px;
+    //
+    //  end of arrow
+    //
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-top: none;
+    border-right: none;
+    background: none;
+    @include border-radius(0 0 0 100%);
+  }
+}
+.zen_ui__tree {
+  > .zen_ui__tree_branch {
+    > .zen_ui__tree_leaf {
+      > div {
+        > div > .zen_ui__tree_branch_toggle {
+          &:after {
+            display: none;
+            // root leafs do not need this
+          }
+        }
+      }
+    }
+  }
+}
+
+//  vertical lines
+.zen_ui__checkbox_for_tree_branch {
+  &:checked {
+    + div {
+      //  vertical line for multi-line "leaf toggle" (connects leaf's "branch toggle" with leaf's children)
+      > div > .zen_ui__tree_leaf_toggle {
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 1rem;
+          bottom: 0;
+          left: 0 - $zen_ui__tree__base_size / 2;
+          margin-left: -1px;
+          width: 1px;
+          z-index: -5;
+          border-left: 1px solid $zen_ui__tree__line_color;
+        }
+      }
+      //  vertical line for siblings of the leafs
+      > .zen_ui__tree_branch {
+        > .zen_ui__tree_leaf {
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0 - $zen_ui__tree__base_size / 2;
+            margin-left: -1px;
+            width: 1px;
+            z-index: -5;
+            border-left: 1px solid $zen_ui__tree__line_color;
+          }
+          &:last-child {
+            &:before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.zen_ui__tree_leaf_toggle {
+  > div {
+    position: relative;
+    min-height: $zen_ui__tree__leaf__height;
+    height: $zen_ui__tree__leaf__height;
+  }
+  &:before {
+    content: "";
+    display: none;
+    position: absolute;
+    z-index: -40;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.zen_ui__tree {
+  &:hover {
+    .zen_ui__tree_leaf_toggle {
+      &:hover {
+        &:before {
+          display: block;
+          @include box-shadow(inset 0 0 10px 0 $zen_ui__tree__leaf__hovered__background);
+          background: whitesmoke;
+        }
+      }
+    }
+  }
+}
+
+$limit: -10;
+@mixin set_branch_margin($i) {
+  $i: $i - 1;
+  .zen_ui__tree_branch {
+    .zen_ui__tree_leaf_toggle:before {
+      left: $i * $zen_ui__tree__base_size;
+    }
+    @if $i > $limit {
+      @include set_branch_margin($i);
+    }
+  }
+}
+@include set_branch_margin(-1);
+
+[data-first-column-alignment="true"] {
+  @for $i from 1 through 10 {
+    .zen_ui__tree_branch[data-column-indent="#{$i}"] {
+      > .zen_ui__tree_leaf > div > div > .zen_ui__tree_leaf_toggle {
+        padding-left: $zen_ui__tree__base_size * $i;
+      }
+    }
+  }
+}
+
+.zen_ui__tree__tree_button {
+  padding: 0 0.7rem;
+  &.selected {
+    &:before {
+      display: block !important;
+      @include box-shadow(
+                      inset 0 0 2px 0 nth($zen_ui__tree__tree_button__selected__shadow, 1),
+                      inset 0 0 10px 0 nth($zen_ui__tree__tree_button__selected__shadow, 2)
+      );
+    }
+    &:after {
+      display: block !important;
+      border-color: $zen_ui__tree__tree_button__selected__border !important;
+    }
+  }
+}

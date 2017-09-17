@@ -1,0 +1,117 @@
+//
+// triangle generator
+//
+// @param direction   direction of a triangle:
+//                    <code>up</code>
+//                    <code>right</code>
+//                    <code>down</code>
+//                    <code>left</code> with all proportions available, and
+//                    <code>upleft</code>
+//                    <code>upright</code>
+//                    <code>downright</code>
+//                    <code>downleft</code> with only <code>right</code> proportion available.
+//
+// @param proportion  proportion of a triangle, may be:
+//                    <code>equilateral</code>
+//                    <code>right</code>
+//                    <code>box</code>
+//
+// @param size        size of a triangle in pixels, for example:
+//                    <code>10px</code>
+//                    depends on proportion:
+//                    equilateral triangle - height from base to alternate corner,
+//                    right triangle - shorter edge,
+//                    box triangle - edge.
+//
+// @param color       color of a triangle, for example:
+//                    <code>tomato</code>
+//
+
+@mixin triangle($direction, $proportion, $size, $color) {
+  width: 0;
+  height: 0;
+  @if $direction == up {
+    @if $proportion == box {
+      border-left: ($size / 2) solid transparent;
+      border-right: ($size / 2) solid transparent;
+      border-bottom: $size solid $color;
+    }
+    @if $proportion == equilateral {
+      border-left: (($size / $sin-60) / 2) solid transparent;
+      border-right: (($size / $sin-60) / 2) solid transparent;
+      border-bottom: $size solid $color;
+    }
+    @if $proportion == right {
+      border-left: $size solid transparent;
+      border-right: $size solid transparent;
+      border-bottom: $size solid $color;
+    }
+  }
+  @if $direction == right {
+    @if $proportion == box {
+      border-top: ($size / 2) solid transparent;
+      border-bottom: ($size / 2) solid transparent;
+      border-left: $size solid $color;
+    }
+    @if $proportion == equilateral {
+      border-top: (($size / $sin-60) / 2) solid transparent;
+      border-bottom: (($size / $sin-60) / 2) solid transparent;
+      border-left: $size solid $color;
+    }
+    @if $proportion == right {
+      border-top: $size solid transparent;
+      border-bottom: $size solid transparent;
+      border-left: $size solid $color;
+    }
+  }
+  @if $direction == down {
+    @if $proportion == box {
+      border-left: ($size / 2) solid transparent;
+      border-right: ($size / 2) solid transparent;
+      border-top: $size solid $color;
+    }
+    @if $proportion == equilateral {
+      border-left: (($size / $sin-60) / 2) solid transparent;
+      border-right: (($size / $sin-60) / 2) solid transparent;
+      border-top: $size solid $color;
+    }
+    @if $proportion == right {
+      border-left: $size solid transparent;
+      border-right: $size solid transparent;
+      border-top: $size solid $color;
+    }
+  }
+  @if $direction == left {
+    @if $proportion == box {
+      border-top: ($size / 2) solid transparent;
+      border-bottom: ($size / 2) solid transparent;
+      border-right: $size solid $color;
+    }
+    @if $proportion == equilateral {
+      border-top: (($size / $sin-60) / 2) solid transparent;
+      border-bottom: (($size / $sin-60) / 2) solid transparent;
+      border-right: $size solid $color;
+    }
+    @if $proportion == right {
+      border-top: $size solid transparent;
+      border-bottom: $size solid transparent;
+      border-right: $size solid $color;
+    }
+  }
+  @if $direction == upleft {
+    border-top: $size solid $color;
+    border-right: $size solid transparent;
+  }
+  @if $direction == upright {
+    border-top: $size solid $color;
+    border-left: $size solid transparent;
+  }
+  @if $direction == downright {
+    border-bottom: $size solid $color;
+    border-left: $size solid transparent;
+  }
+  @if $direction == downleft {
+    border-bottom: $size solid $color;
+    border-right: $size solid transparent;
+  }
+}

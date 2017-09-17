@@ -1,0 +1,44 @@
+
+.toggle_button_input {
+  @include hidden_input;
+  &:disabled + .zen_ui__button + div {
+    display:block;
+  }
+}
+
+@each $palette, $options in $button_palette {
+  .zen_ui__button[data-palette="#{$palette}"] {
+    @include button_state_palette($palette,inactive);
+  }
+  .zen_ui__button[data-palette="#{$palette}"]:active {
+    @include button_state_palette($palette,active);
+  }
+  .toggle_button_input {
+    &:disabled + label.zen_ui__button[data-palette="#{$palette}"] {
+      @include button_state_palette($palette,inactive_disabled);
+    }
+    &:checked + label.zen_ui__button[data-palette="#{$palette}"] {
+      @include button_state_palette($palette,active);
+    }
+    &:checked + label.zen_ui__button[data-palette="#{$palette}"]:active {
+      @include button_state_palette($palette,inactive);
+    }
+    // "value" is being used by React impl
+    &[value="true"] + label.zen_ui__button[data-palette="#{$palette}"] {
+      @include button_state_palette($palette,active);
+    }
+    &[value="true"] + label.zen_ui__button[data-palette="#{$palette}"]:active {
+      @include button_state_palette($palette,inactive);
+    }
+  }
+  
+  button.zen_ui__button.active[data-palette="#{$palette}"] {
+    @include button_state_palette($palette,active);
+    &:active {
+      @include button_state_palette($palette,inactive);
+    }
+    &:disabled {
+      @include button_state_palette($palette,active_disabled);
+    }
+  }
+}

@@ -1,0 +1,92 @@
+
+$tt-time-field-width: 5rem;
+
+.zen_ui__time_field__container {
+  position: relative;
+  &[data-stretch="true"] {
+    height: 100%;
+    width: 100%;
+  }
+  &[data-stretch="false"] {
+    height: $zen_ui__textfield__height;
+    width: $tt-time-field-width;
+  }
+  &[data-stretch="only_y"] {
+    height: 100%;
+    width: $tt-time-field-width;
+  }
+  &[data-stretch="only_x"] {
+    heigth: $zen_ui__textfield__height;
+    width: 100%;
+  }
+  > div {
+    display: table;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+  }
+  .zen_ui__time_field__input {
+    font-size: 1rem;
+    line-height: 1;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background: none;
+    @include box-sizing(border-box);
+    position: relative;
+    text-align: center;
+    + div {
+      border: 1px solid;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -2;
+      background: white;
+      @include border-radius($zen_ui__textfield__border_radius);
+    }
+  }
+  .zen_ui__time_field__input + div {
+    @include zen_ui__textfield__valid__pristine;
+  }
+  &:hover .zen_ui__time_field__input + div {
+    @include zen_ui__textfield__valid__hovered;
+  }
+  .zen_ui__time_field__input:focus + div {
+    z-index: -1;
+    @include zen_ui__textfield__valid__focused;
+  }
+  &[data-error="true"] {
+    .zen_ui__time_field__input + div {
+      @include zen_ui__textfield__invalid__pristine;
+    }
+    &:hover .zen_ui__time_field__input + div {
+      @include zen_ui__textfield__invalid__hovered;
+    }
+    .zen_ui__time_field__input:focus + div {
+      @include zen_ui__textfield__invalid__focused;
+    }
+  }
+}
+.zen_ui__time_field__input_container {
+  display: table-cell;
+  vertical-align: top;
+  width: 50%;
+  height: inherit; // Firefox bug fix
+  &:first-child {
+    padding-left: 0.3rem;
+  }
+  &:last-child {
+    padding-right: 0.3rem;
+  }
+}
+.zen_ui__time_field__colon {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 1rem;
+  color: silver;
+  @include user-select(none);
+}

@@ -1,0 +1,111 @@
+
+$nav-panel-font-size: 17px;
+
+.zen_ui__horizontal_menu {
+  @include stretch;
+  background: $nav-panel-background-color;
+  border-bottom: 1px solid silver;
+}
+.zen_ui__horizontal_menu_image {
+  font-size: 0;
+  line-height: 0;
+}
+
+.nav-panel-button > span {
+  font-size: $nav-panel-font-size;
+}
+
+.zen_ui__horizontal_menu__button_container {
+  @include stretch;
+  z-index: 3;
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 2px;
+    @include box-shadow(inset 0 0 3px 0 rgba(black,0.01), inset 0 0 10px 0 rgba(black,0.03));
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    right: -1px;
+    bottom: 0;
+    left: 0;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-left-color: $nav-button-border-color;
+    border-right-color: $nav-button-border-color;
+    background: $nav-button-background-color;
+  }
+  &:hover {
+    background: rgba($nav-button-active-background-color,0.62);
+  }
+  &.selected {
+    background: $nav-button-active-background-color;
+    .zen_ui__horizontal_menu__button {
+      &:before {
+        @include triangle($direction:up,$proportion:right,$size:6px,$color:$nav-panel-triangle-color);
+      }
+      &:after {
+        @include triangle($direction:up,$proportion:right,$size:7px,$color:silver);
+      }
+    }
+  }
+}
+
+.zen_ui__horizontal_menu__button {
+  @include stretch;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 20000;
+    top: 100%;
+    right: 50%;
+    bottom: auto;
+    left: auto;
+    margin-top: -4px;
+    margin-right: -6px;
+  }
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 19999;
+    top: 100%;
+    right: 50%;
+    bottom: auto;
+    left: auto;
+    margin-top: -6px;
+    margin-right: -7px;
+  }
+}
+
+a.zen_ui__horizontal_menu__button,
+a.zen_ui__horizontal_menu__button:hover {
+  border: none;
+  color: $zen_ui__horizontal_menu__button__text_color;
+}
+
+a.zen_ui__horizontal_menu__button {
+  > span {
+    display: table;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    > span {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+}

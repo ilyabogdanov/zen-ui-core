@@ -1,0 +1,18 @@
+{
+  "name": "zen-ui-core",
+  "version": "0.1.0",
+  "main": "dist/zen-ui-core.css",
+  "description": "",
+  "author": "Ilya Bogdanov <public@ilyabogdanov.ru>",
+  "license": "Apache-2.0",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ilyabogdanov/zen-ui-core.git"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-watch": "latest"
+  }
+}

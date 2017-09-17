@@ -1,0 +1,35 @@
+
+.zen_ui__button:disabled + div,
+.zen_ui__button.disabled + div {
+  display: block !important;
+}
+
+@each $palette, $options in $button_palette {
+  .zen_ui__button[data-palette="#{$palette}"] {
+    @include button_state_palette($palette,inactive);
+    &:active {
+      @include button_state_palette($palette,active);
+    }
+    &:disabled {
+      @include button_state_palette($palette,inactive_disabled);
+    }
+  }
+}
+@each $palette, $options in $button_palette {
+  a.zen_ui__button[data-palette="#{$palette}"] {
+    &.disabled{
+      @include button_state_palette($palette,inactive_disabled);
+    }
+  }
+}
+// checkbox is for combo
+.zen_ui__button_checkbox:disabled {
+  @each $palette, $options in $button_palette {
+    + .zen_ui__button[data-palette="#{$palette}"] {
+      @include button_state_palette($palette,inactive_disabled);
+      &:active {
+        @include button_state_palette($palette,inactive_disabled);
+      }
+    }
+  }
+}

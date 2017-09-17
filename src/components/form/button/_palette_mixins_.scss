@@ -1,0 +1,47 @@
+
+@mixin button_state_palette($palette,$state) {
+  $options: map-get($button_palette,$palette);
+  @if $state == inactive {
+    color: map-get($options, inactive_text);
+    @include linear-gradient(
+      nth(map-get($options, inactive_gradient), 1),
+      nth(map-get($options, inactive_gradient), 2));
+    @include box-shadow(
+      inset 1px 1px 2px nth(map-get($options, inactive_shadows), 1),
+      inset -1px -1px 2px nth(map-get($options, inactive_shadows), 2),
+      0 1px 3px -1px rgba(black,0.2));
+    border-top-color: nth(map-get($options, inactive_borders), 1);
+    border-right-color: nth(map-get($options, inactive_borders), 2);
+    border-bottom-color: nth(map-get($options, inactive_borders), 3);
+    border-left-color: nth(map-get($options, inactive_borders), 4);
+  }
+  @if $state == inactive_disabled {
+    color: map-get($options, inactive_disabled_text);
+    @include linear-gradient(
+      nth(map-get($options, inactive_disabled_gradient), 1),
+      nth(map-get($options, inactive_disabled_gradient), 2));
+    border-top-color: nth(map-get($options, inactive_disabled_borders), 1);
+    border-right-color: nth(map-get($options, inactive_disabled_borders), 2);
+    border-bottom-color: nth(map-get($options, inactive_disabled_borders), 3);
+    border-left-color: nth(map-get($options, inactive_disabled_borders), 4);
+  }
+  @if $state == active {
+    @include box-shadow(
+      inset 3px 3px 8px -3px nth(map-get($options, active_shadows), 1),
+      inset -1px -1px 5px 1px nth(map-get($options, active_shadows), 2));
+    border-top-color: nth(map-get($options, active_borders), 1);
+    border-right-color: nth(map-get($options, active_borders), 2);
+    border-bottom-color: nth(map-get($options, active_borders), 3);
+    border-left-color: nth(map-get($options, active_borders), 4);
+  }
+  @if $state == active_disabled {
+    color: map-get($options, active_disabled_text);
+    @include linear-gradient(
+      nth(map-get($options, active_disabled_gradient), 1),
+      nth(map-get($options, active_disabled_gradient), 2));
+    border-top-color: nth(map-get($options, active_disabled_borders), 1);
+    border-right-color: nth(map-get($options, active_disabled_borders), 2);
+    border-bottom-color: nth(map-get($options, active_disabled_borders), 3);
+    border-left-color: nth(map-get($options, active_disabled_borders), 4);
+  }
+}

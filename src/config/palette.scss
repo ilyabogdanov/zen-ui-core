@@ -1,0 +1,188 @@
+
+body {
+  background: whitesmoke;
+}
+
+$Blue: #4BB4FF;
+$Red: #fe4543;
+$Orange: #ffbb34;
+
+$Gray0: rgb(250,250,250);
+$Gray1: rgb(245,245,245);
+$Gray2: rgb(235,235,235);
+$Gray3: rgb(225,225,225);
+$Gray4: rgb(215,215,215);
+$Gray5: rgb(205,205,205);
+$Gray6: rgb(195,195,195);
+
+$gray0: rgb(250,250,250);
+$gray1: rgb(245,245,245);
+$gray2: rgb(235,235,235);
+$gray3: rgb(225,225,225);
+$gray4: rgb(215,215,215);
+$gray5: rgb(205,205,205);
+$gray6: rgb(195,195,195);
+$blue__light: #189fff;
+$blue__normal: #0085e4;
+$blue__dark: #002e50;
+$dark_pastel: #002e50;
+
+//
+// Link
+//
+$zen_ui__link__pristine : #0088cc;
+$zen_ui__link__focused  : #189fff;
+$zen_ui__link__hovered  : #005580;
+//
+// Menu
+//
+$zen_ui__horizontal_menu__button__text_color: black;
+$nav-panel-background: #ebebeb;
+$nav-panel-background-color: #ebebeb;
+$nav-panel-border-color: rgb(250,250,250);
+$nav-panel-triangle-color: whitesmoke;
+$nav-button-background-color: transparent;
+$nav-button-active-background-color: white;
+$nav-button-border-color: #bbbbbb;
+$submenu_background: #dfdfdf;
+$submenu_border: rgb(250,250,250);
+$y_nav_background: #dfdfdf;
+$y_nav_border: rgb(250,250,250);
+$y_nav_button_background__active: rgb(215,215,215);
+$radio_button_triangle: rgb(250,250,250);
+$dropbox_button__triangle__outer: rgb(250,250,250);
+$dropbox_button__triangle__inner: #dfdfdf;
+$submenu_separator__dark: rgba(black,0.05);
+$submenu_separator__light: rgba(white,0.5);
+//
+// Layout
+//
+$zen_ui__layout__divider__illuminated_color       : rgba(white,0.5);
+$zen_ui__layout__divider__shadowed_color          : rgba(0,0,0,0.06);
+//
+// Path
+//
+$zen_ui__path__previous_item_color                : $zen_ui__link__pristine;
+$zen_ui__path__previous_item_focus_color          : #189fff;
+$zen_ui__path__previous_item_hover_color          : $zen_ui__link__hovered;
+$zen_ui__path__current_item_color                 : #999999;
+$zen_ui__path__separator_color                    : #999999;
+//
+// Checkbox
+//
+$zen_ui__checkbox__enabled__background_color      : white;
+$zen_ui__checkbox__enabled__border_color          : darken(white, 21%); // #c9c9c9
+$zen_ui__checkbox__enabled__border_color__hovered : darken(white, 55%); // #737373
+$zen_ui__checkbox__enabled__border_color__focused : $blue__light;
+$zen_ui__checkbox__enabled__shadow                : inset 0 0 4px 0 rgba(black, 0.13);
+$zen_ui__checkbox__disabled__background_color     : darken(white, 6%); // #f0f0f0
+$zen_ui__checkbox__disabled__border_color         : darken(white, 21%); // #c9c9c9
+$zen_ui__checkbox__sign_color                     : black;
+//
+// Text Field
+//
+$zen_ui__textfield__background_color              : white;
+$zen_ui__textfield__valid__pristine__shadow       : rgba(black,0.03);
+$zen_ui__textfield__valid__pristine__border       : $Gray2, $Gray2, $Gray2, $Gray2;
+$zen_ui__textfield__valid__hovered__shadow        : rgba(black,0.1);
+$zen_ui__textfield__valid__hovered__border        : $Gray6, $Gray4, $Gray4, $Gray6;
+$zen_ui__textfield__valid__focused__shadow        : rgba(75,180,255,0.38); // #4bb4ff $Blue
+$zen_ui__textfield__valid__focused__border        : $Blue, lighten($Blue,13%), lighten($Blue,13%) , $Blue;
+$zen_ui__textfield__invalid__pristine__shadow     : rgba(black,0.03);
+$zen_ui__textfield__invalid__pristine__border     : lighten($Red,21%), lighten($Red,26%), lighten($Red,26%), lighten($Red,21%);
+$zen_ui__textfield__invalid__hovered__shadow      : rgba(black,0.01);
+$zen_ui__textfield__invalid__hovered__border      : $Red, lighten($Red,13%), lighten($Red,13%), $Red;
+$zen_ui__textfield__invalid__focused__shadow      : rgba($Red,0.21);
+$zen_ui__textfield__invalid__focused__border      : $Red, lighten($Red,13%), lighten($Red,13%), $Red;
+//
+// Number Field
+//
+$zen_ui__number_field__button__enabled__triangle__pristine : #999999;
+$zen_ui__number_field__button__enabled__triangle__hovered  : #000000;
+$zen_ui__number_field__button__enabled__pristine__border   : rgba(black,0.08), rgba(black,0.13), rgba(black,0.16), rgba(black,0.08);
+$zen_ui__number_field__button__enabled__pristine__gradient : white, lighten($Gray1, 2%);
+$zen_ui__number_field__button__enabled__pristine__shadow   : white, rgba(black,0.05), rgba(black,0.08);
+$zen_ui__number_field__button__enabled__hovered__border    : rgba(black,0.21), rgba(black,0.34), rgba(black,0.34), rgba(black,0.21);
+$zen_ui__number_field__button__enabled__hovered__gradient  : white, $Gray1;
+$zen_ui__number_field__button__enabled__hovered__shadow    : white, rgba(black,0.05), rgba(black,0.08);
+//
+// Button
+//
+$button_palette: (
+        ordinary: (
+                inactive_text              : black,
+                inactive_gradient          : (white,#f5f5f5),
+                inactive_shadows           : (white,#e4e4e4),
+                inactive_borders           : (#c8c8c8,#c3c3c3,#c3c3c3,#c8c8c8),
+                inactive_disabled_text     : #808080,
+                inactive_disabled_gradient : (#f5f5f5,#ebebeb),
+                inactive_disabled_borders  : (#d8d8d8,#cdcdcd,#cdcdcd,#d8d8d8),
+                active_shadows             : (rgba(black,0.4),rgba(black,0.1)),
+                active_borders             : (gray,silver,silver,gray),
+                active_disabled_text       : #808080,
+                active_disabled_gradient   : (#f5f5f5,#ebebeb),
+                active_disabled_borders    : (gray,silver,silver,gray)
+        ),
+        branded: (
+                inactive_text              : white,
+                inactive_gradient          : (#00a595,#188890),
+                inactive_shadows           : (rgba(white,0.34),rgba(black,0.13)),
+                inactive_borders           : (darken(#00a595,8%),darken(#29758f,8%),darken(#29758f,8%),darken(#00a595,8%)),
+                inactive_disabled_text     : white,
+                inactive_disabled_gradient : (#82b8ba,#7e9eb1),
+                inactive_disabled_borders  : (#82b8ba,#7e9eb1,#7e9eb1,#82b8ba),
+                active_shadows             : (rgba(black,0.8),rgba(black,0.2)),
+                active_borders             : (black,#666,#666,black),
+                active_disabled_text       : white,
+                active_disabled_gradient   : (#82b8ba,#7e9eb1),
+                active_disabled_borders    : (black,#666,#666,black)
+        )
+);
+//
+// Combobox
+//
+$zen_ui__combobox__active__background                  : #a6d9fe;
+$zen_ui__combobox__triangle_color                      : black;
+$zen_ui__combobox__triangle_divider__illuminated_color : rgba(white,0.5);
+$zen_ui__combobox__triangle_divider__shadowed_color    : rgba(black,0.05);
+$zen_ui__combobox__option__background__pristine        : white;
+$zen_ui__combobox__option__background__hovered         : $Gray1;
+$zen_ui__combobox__option__border_color                : $Gray1;
+$zen_ui__combobox__empty_list_warning__text_color      : #777;
+$zen_ui__combobox__search_field__background_gradient   : white, $Gray1;
+$zen_ui__combobox__dropbox__background                 : $Gray1;
+$zen_ui__combobox__dropbox__border                     : $Gray4, $Gray6, $Gray6, $Gray4;
+$zen_ui__combobox__dropbox__shadow                     : rgba(black,0.21);
+//
+// Modal
+//
+$zen_ui__modal__background: rgba(#f5f5f5,0.9);
+//
+// Window
+//
+$zen_ui__window: (
+        ordinary:(
+                text: black,
+                gradient: (white, #ebebeb)
+        ),
+        branded:(
+                text: white,
+                gradient: (#00a595, #188890)
+        )
+);
+$zen_ui__window__container_shadow : rgba(black,0.34), rgba(black,0.21);
+$zen_ui__window__head_shadow      : rgba(white,0.5), rgba(black,0.55);
+//
+// Loading Mask
+//
+$zen_ui__loading_mask__text_color : #0088cc;
+//
+// Tree
+//
+$zen_ui__tree__tree_button__background: white;
+$zen_ui__tree__tree_button__shadow: rgba(black,0.02), rgba(black,0.05);
+$zen_ui__tree__background: white;
+$zen_ui__tree__line_color: rgb(240,240,240);
+$zen_ui__tree__tree_button__selected__shadow: rgba(#002e50,0.02), rgba(#002e50,0.08);
+$zen_ui__tree__tree_button__selected__border: #002e50;
+$zen_ui__tree__leaf__hovered__background: rgba(black,0.05);

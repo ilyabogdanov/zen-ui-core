@@ -1,0 +1,59 @@
+
+.zen_ui__textfield__container {
+  &[data-stretch="true"] {
+    @include stretch_margin;
+    > .zen_ui__textfield__input {
+      position: absolute;
+      height: 100%;
+    }
+  }
+  &[data-stretch="false"] {
+    > .zen_ui__textfield__input {
+      height: 2.1rem;
+    }
+  }
+}
+// React workaround
+[data-stretch="true"] > [type="password"] {
+  position: absolute;
+  height: 100%;
+}
+[data-stretch="false"] > input {
+  height: 2.1rem;
+}
+.zen_ui__textfield__input {
+  @include border-radius(0.23rem);
+  z-index: 2;
+  left: 0;
+  top: 0;
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 0 0.62rem;
+  background: transparent;
+  border: 1px solid;
+  font-size: 1rem;
+  line-height: 1;
+  background: $zen_ui__textfield__background_color;
+}
+.zen_ui__textfield__input {
+  @include zen_ui__textfield__valid__pristine;
+  &:hover {
+    z-index: 5;
+    @include zen_ui__textfield__valid__hovered;
+  }
+  &:focus {
+    z-index: 999;
+    @include zen_ui__textfield__valid__focused;
+  }
+  &[data-error="true"] {
+    z-index: 6;
+    @include zen_ui__textfield__invalid__pristine;
+    &:hover {
+      @include zen_ui__textfield__invalid__hovered;
+    }
+    &:focus {
+      @include zen_ui__textfield__invalid__focused;
+    }
+  }
+}

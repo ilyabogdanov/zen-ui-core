@@ -1,0 +1,13 @@
+
+//
+// Property "visibility" must not be used here, because "focus" will not be possible
+//
+@mixin hidden_input {
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: -12345px;
+  width: 0;
+  height: 0;
+}

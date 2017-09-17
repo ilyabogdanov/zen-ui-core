@@ -1,0 +1,14 @@
+
+.zen_ui__static_raster_icon {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: 1px;
+  overflow: visible;
+  &:before {
+    content: "";
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+  }
+}

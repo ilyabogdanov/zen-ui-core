@@ -1,0 +1,18 @@
+
+.zen_ui__clipped_text {
+  width: 100%;
+  height: 100%;
+  display: table;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  > div,
+  > span {
+    display: table-cell;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    text-align: left;
+  }
+}

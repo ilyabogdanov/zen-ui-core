@@ -1,0 +1,23 @@
+
+.zen_ui__loading_mask {
+  background: white;
+  @include stretch;
+  z-index: 100000;
+  > div {
+    display: table;
+    @include stretch;
+    > div {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+}
+.zen_ui__loading_mask__text {
+  color: $zen_ui__loading_mask__text_color;
+  margin-bottom: 0.62em;
+}
+.zen_ui__loading_mask__animation {
+  text-align: center;
+  font-size: 0;
+}

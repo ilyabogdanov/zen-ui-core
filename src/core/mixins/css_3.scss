@@ -1,0 +1,61 @@
+@mixin appearance($value) {
+  appearance: $value;
+  -moz-appearance: $value;
+  -webkit-appearance: $value;
+}
+
+@mixin border-radius($value) {
+  border-radius: $value;
+}
+
+@mixin box-shadow($shadows...) {
+  box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+}
+
+@mixin box-sizing($value) {
+  box-sizing: $value;
+}
+
+@mixin horizontal-gradient($from, $to) {
+  background-color: $from;
+  background: linear-gradient(to right,  $from 0%, $to 100%);
+  background: -moz-linear-gradient(left,  $from 0%, $to 100%);
+  background: -webkit-linear-gradient(left,  $from 0%, $to 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}', GradientType=1);
+}
+
+@mixin linear-gradient($from, $to) {
+  background-color: $from;
+  background: linear-gradient(to bottom,$from 0%,$to 100%);
+}
+
+@mixin text-shadow($shadows...) {
+  text-shadow: $shadows;
+}
+
+@mixin user-select($value) {
+  user-select: $value;
+  -moz-user-select: $value;
+  -ms-user-select: $value;
+  -webkit-user-select: $value;
+}
+
+@mixin transition($value) {
+  transition: $value;
+  -moz-transition: $value;
+  -ms-transition: $value;
+  -o-transition: $value;
+  -webkit-transition: $value;
+}
+
+@mixin transition-property($value) {
+  transition-property: $value;
+  -webkit-transition-property: $value;
+}
+
+@mixin transform($value) {
+  transform: $value;
+  -o-transform: $value;
+}

@@ -1,0 +1,126 @@
+
+$zen_ui__checkbox__size: 1.3rem;
+$zen_ui__checkbox__horizontal_margin: 0.4rem;
+$zen_ui__checkbox__vertical_margin: 0.4rem;
+$zen_ui__checkbox__text__horizontal_margin: 2.1rem;
+$zen_ui__checkbox__text__vertical_margin: 0.5rem;
+
+.zen_ui__checkbox_container {
+  width: 100%;
+  display: table;
+  > div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  &[data-align="left"] {
+    > div {
+      text-align: left;
+    }
+    .zen_ui__checkbox,
+    .zen_ui__radio {
+      padding-left: $zen_ui__checkbox__text__horizontal_margin;
+      &:before {
+        left: 0.03em;
+      }
+      &:after {
+        left: $zen_ui__checkbox__horizontal_margin;
+      }
+    }
+  }
+  &[data-align="right"] {
+    > div {
+      text-align: right;
+    }
+    .zen_ui__checkbox,
+    .zen_ui__radio {
+      padding-right: $zen_ui__checkbox__text__horizontal_margin;
+      &:before {
+        right: 0.3em;
+      }
+      &:after {
+        right: $zen_ui__checkbox__horizontal_margin;
+      }
+    }
+  }
+}
+.zen_ui__checkbox,
+.zen_ui__radio {
+  display: inline-block;
+  //      "inline-block" allows left alignment of long text when checkbox itself is aligned to the right
+  text-align: left;
+  cursor: pointer;
+  @include user-select(none);
+  position: relative;
+  min-height: $zen_ui__checkbox__size + $zen_ui__checkbox__vertical_margin * 2;
+  line-height: 1.3;
+  min-width: $zen_ui__checkbox__size + $zen_ui__checkbox__horizontal_margin * 2;
+  padding-top: $zen_ui__checkbox__text__vertical_margin;
+  padding-bottom: $zen_ui__checkbox__text__vertical_margin;
+  font-size: 1rem;
+  &:before {
+    content: "h";
+    font-family: ZenUiBasicIcons;
+    position: absolute;
+    z-index: 2;
+    display: none;
+    font-size: 1.6rem;
+    line-height: 1;
+    top: 0.2em;
+  }
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: $zen_ui__checkbox__vertical_margin;
+    height: $zen_ui__checkbox__size;
+    width: $zen_ui__checkbox__size;
+    border: 1px solid;
+  }
+}
+.zen_ui__radio:after {
+  border-radius: 50%;
+}
+.zen_ui__checkbox,
+.zen_ui__radio {
+  &:before {
+    color: $zen_ui__checkbox__sign_color;
+  }
+  &:after {
+    background-color: $zen_ui__checkbox__enabled__background_color;
+    border-color: $zen_ui__checkbox__enabled__border_color;
+    @include box-shadow($zen_ui__checkbox__enabled__shadow);
+  }
+  &:hover {
+    &:after {
+      border-color: $zen_ui__checkbox__enabled__border_color__hovered;
+    }
+  }
+}
+.zen_ui__checkbox_input {
+  @include hidden_input;
+  &:checked,
+  &[value="true"] {
+    // "value" is being used by React impl
+    + label:before {
+      display: block;
+    }
+  }
+  &:focus + label:after {
+    border-color: $zen_ui__checkbox__enabled__border_color__focused;
+  }
+  &:disabled {
+    + label {
+      cursor: default;
+      &:after {
+        background-color: $zen_ui__checkbox__disabled__background_color;
+        border-color: $zen_ui__checkbox__disabled__border_color;
+      }
+    }
+    &[data-readable-only="true"] + label:after {
+      background-color: $zen_ui__checkbox__enabled__background_color;
+      border-color: $zen_ui__checkbox__enabled__border_color;
+      @include box-shadow($zen_ui__checkbox__enabled__shadow);
+    }
+  }
+}

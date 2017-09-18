@@ -1,7 +1,6 @@
 
 .zen_ui__vertical_layout__non_stretch[data-divider="true"],
 .zen_ui__vertical_layout__stretch[data-divider="true"] {
-  > .zen_ui__vertical_layout_row__non_stretch,
   > .zen_ui__vertical_layout_row__stretch {
     > div > div {
       border-top: 1px solid $zen_ui__layout__divider__illuminated_color;
@@ -14,6 +13,21 @@
       border-bottom: none;
     }
     &:first-child:last-child > div > div {
+      border: none;
+    }
+  }
+  > .zen_ui__vertical_layout_row__non_stretch {
+    > div {
+      border-top: 1px solid $zen_ui__layout__divider__illuminated_color;
+      border-bottom: 1px solid $zen_ui__layout__divider__shadowed_color;
+    }
+    &:first-child > div {
+      border-top: none;
+    }
+    &:last-child > div {
+      border-bottom: none;
+    }
+    &:first-child:last-child > div {
       border: none;
     }
   }

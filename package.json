@@ -1,6 +1,6 @@
 {
   "name": "zen-ui-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/zen-ui-core.css",
   "description": "",
   "author": "Ilya Bogdanov <public@ilyabogdanov.ru>",

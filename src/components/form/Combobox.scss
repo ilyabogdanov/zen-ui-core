@@ -122,10 +122,8 @@ input {
   > div > .zen_ui__button {
     padding-right: 1.84rem;
     @include user-select(none);
-    .zen_ui__text > span {
+    .zen_ui__button_text > span {
       text-align: left;
-      vertical-align: middle;
-      padding: 0 0 0 0.7rem;
     }
     > .zen_ui__combobox__triangle {
       &:before,

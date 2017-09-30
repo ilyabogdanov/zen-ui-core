@@ -350,22 +350,25 @@ h1 {
     font-size: 1rem; }
 
 .zen_ui__button .zen_ui__button_text {
-  white-space: nowrap;
+  white-space: nowrap; }
+
+button.zen_ui__button > .zen_ui__button_text {
   padding: 0 0.62rem; }
 
-a.zen_ui__button > span,
-label.zen_ui__button > span {
+a.zen_ui__button > .zen_ui__button_text,
+label.zen_ui__button > .zen_ui__button_text {
   display: table;
   width: 100%;
   height: 100%;
   min-height: 100%;
   top: 0;
   left: 0; }
-  a.zen_ui__button > span > span,
-  label.zen_ui__button > span > span {
+  a.zen_ui__button > .zen_ui__button_text > span,
+  label.zen_ui__button > .zen_ui__button_text > span {
     display: table-cell;
     vertical-align: middle;
-    text-align: center; }
+    text-align: center;
+    padding: 0 0.62rem; }
 
 .zen_ui__button_container > .zen_ui__button + div {
   display: none;
@@ -404,6 +407,7 @@ label.zen_ui__button > span {
 
 .zen_ui__conjoined_buttons {
   height: 100%;
+  font-size: 0;
   white-space: nowrap; }
 
 .zen_ui__button:disabled + div,
@@ -517,7 +521,7 @@ a.zen_ui__button[data-palette="branded"].disabled {
     border-bottom-color: #7e9eb1;
     border-left-color: #82b8ba; }
 
-.toggle_button_input {
+.zen_ui__toggle_button_input {
   position: absolute;
   top: auto;
   right: auto;
@@ -525,7 +529,7 @@ a.zen_ui__button[data-palette="branded"].disabled {
   left: -12345px;
   width: 0;
   height: 0; }
-  .toggle_button_input:disabled + .zen_ui__button + div {
+  .zen_ui__toggle_button_input:disabled + .zen_ui__button + div {
     display: block; }
 
 .zen_ui__button[data-palette="ordinary"] {
@@ -549,7 +553,7 @@ a.zen_ui__button[data-palette="branded"].disabled {
   border-bottom-color: silver;
   border-left-color: gray; }
 
-.toggle_button_input:disabled + label.zen_ui__button[data-palette="ordinary"] {
+.zen_ui__toggle_button_input:disabled + label.zen_ui__button[data-palette="ordinary"] {
   color: #808080;
   background-color: #f5f5f5;
   background: linear-gradient(to bottom, #f5f5f5 0%, #ebebeb 100%);
@@ -557,7 +561,7 @@ a.zen_ui__button[data-palette="branded"].disabled {
   border-right-color: #cdcdcd;
   border-bottom-color: #cdcdcd;
   border-left-color: #d8d8d8; }
-.toggle_button_input:checked + label.zen_ui__button[data-palette="ordinary"] {
+.zen_ui__toggle_button_input:checked + label.zen_ui__button[data-palette="ordinary"] {
   box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.4), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.4), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.4), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
@@ -565,7 +569,7 @@ a.zen_ui__button[data-palette="branded"].disabled {
   border-right-color: silver;
   border-bottom-color: silver;
   border-left-color: gray; }
-.toggle_button_input:checked + label.zen_ui__button[data-palette="ordinary"]:active {
+.zen_ui__toggle_button_input:checked + label.zen_ui__button[data-palette="ordinary"]:active {
   color: black;
   background-color: white;
   background: linear-gradient(to bottom, white 0%, #f5f5f5 100%);
@@ -576,7 +580,7 @@ a.zen_ui__button[data-palette="branded"].disabled {
   border-right-color: #c3c3c3;
   border-bottom-color: #c3c3c3;
   border-left-color: #c8c8c8; }
-.toggle_button_input[value="true"] + label.zen_ui__button[data-palette="ordinary"] {
+.zen_ui__toggle_button_input[value="true"] + label.zen_ui__button[data-palette="ordinary"] {
   box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.4), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.4), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.4), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
@@ -584,7 +588,7 @@ a.zen_ui__button[data-palette="branded"].disabled {
   border-right-color: silver;
   border-bottom-color: silver;
   border-left-color: gray; }
-.toggle_button_input[value="true"] + label.zen_ui__button[data-palette="ordinary"]:active {
+.zen_ui__toggle_button_input[value="true"] + label.zen_ui__button[data-palette="ordinary"]:active {
   color: black;
   background-color: white;
   background: linear-gradient(to bottom, white 0%, #f5f5f5 100%);
@@ -645,7 +649,7 @@ button.zen_ui__button.active[data-palette="ordinary"] {
   border-bottom-color: #666;
   border-left-color: black; }
 
-.toggle_button_input:disabled + label.zen_ui__button[data-palette="branded"] {
+.zen_ui__toggle_button_input:disabled + label.zen_ui__button[data-palette="branded"] {
   color: white;
   background-color: #82b8ba;
   background: linear-gradient(to bottom, #82b8ba 0%, #7e9eb1 100%);
@@ -653,7 +657,7 @@ button.zen_ui__button.active[data-palette="ordinary"] {
   border-right-color: #7e9eb1;
   border-bottom-color: #7e9eb1;
   border-left-color: #82b8ba; }
-.toggle_button_input:checked + label.zen_ui__button[data-palette="branded"] {
+.zen_ui__toggle_button_input:checked + label.zen_ui__button[data-palette="branded"] {
   box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.8), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.8), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.8), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.2);
@@ -661,7 +665,7 @@ button.zen_ui__button.active[data-palette="ordinary"] {
   border-right-color: #666;
   border-bottom-color: #666;
   border-left-color: black; }
-.toggle_button_input:checked + label.zen_ui__button[data-palette="branded"]:active {
+.zen_ui__toggle_button_input:checked + label.zen_ui__button[data-palette="branded"]:active {
   color: white;
   background-color: #00a595;
   background: linear-gradient(to bottom, #00a595 0%, #188890 100%);
@@ -672,7 +676,7 @@ button.zen_ui__button.active[data-palette="ordinary"] {
   border-right-color: #205b6f;
   border-bottom-color: #205b6f;
   border-left-color: #007c70; }
-.toggle_button_input[value="true"] + label.zen_ui__button[data-palette="branded"] {
+.zen_ui__toggle_button_input[value="true"] + label.zen_ui__button[data-palette="branded"] {
   box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.8), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.8), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 3px 3px 8px -3px rgba(0, 0, 0, 0.8), inset -1px -1px 5px 1px rgba(0, 0, 0, 0.2);
@@ -680,7 +684,7 @@ button.zen_ui__button.active[data-palette="ordinary"] {
   border-right-color: #666;
   border-bottom-color: #666;
   border-left-color: black; }
-.toggle_button_input[value="true"] + label.zen_ui__button[data-palette="branded"]:active {
+.zen_ui__toggle_button_input[value="true"] + label.zen_ui__button[data-palette="branded"]:active {
   color: white;
   background-color: #00a595;
   background: linear-gradient(to bottom, #00a595 0%, #188890 100%);
@@ -1346,10 +1350,8 @@ input:checked + label + .zen_ui__combobox__dropbox {
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none; }
-  .zen_ui__combobox__container > div > .zen_ui__button .zen_ui__text > span {
-    text-align: left;
-    vertical-align: middle;
-    padding: 0 0 0 0.7rem; }
+  .zen_ui__combobox__container > div > .zen_ui__button .zen_ui__button_text > span {
+    text-align: left; }
   .zen_ui__combobox__container > div > .zen_ui__button > .zen_ui__combobox__triangle:before, .zen_ui__combobox__container > div > .zen_ui__button > .zen_ui__combobox__triangle:after {
     content: "";
     display: block;

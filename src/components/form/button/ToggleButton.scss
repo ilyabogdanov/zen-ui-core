@@ -1,5 +1,5 @@
 
-.toggle_button_input {
+.zen_ui__toggle_button_input {
   @include hidden_input;
   &:disabled + .zen_ui__button + div {
     display:block;
@@ -13,7 +13,7 @@
   .zen_ui__button[data-palette="#{$palette}"]:active {
     @include button_state_palette($palette,active);
   }
-  .toggle_button_input {
+  .zen_ui__toggle_button_input {
     &:disabled + label.zen_ui__button[data-palette="#{$palette}"] {
       @include button_state_palette($palette,inactive_disabled);
     }
